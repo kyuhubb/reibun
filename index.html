@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Japanese Exemples</title>
+	<style type="text/css">
+		body{
+			margin:  0;
+			background: #222;
+		}
+
+		input{
+			width: 25vw;
+			height: 5vh;
+			font-size: 1.4em;
+		}
+
+		.res{
+			text-align: center!important;
+		}
+
+		button{
+			height: 6vh;
+			font-size: 1.3em;
+			border-style: solid;
+		}
+
+		button:active{
+			font-size:  1em;
+			height: 5vh;
+		}
+
+		button:hover{
+			color: #F0F0F0;
+			background: #111;
+		}
+
+		div{
+			text-align: center;
+			margin: 10px;
+		}
+
+		p{	
+			font-size: 1.5em;
+			text-align: left;
+			background: #FFF;
+			margin: 0;
+			padding:  10px;
+			color: #FFF;
+			background: #222;
+		}
+		p:nth-child(2n){
+			background : #444;
+			color:  #FFF;
+		}
+
+		em{
+			color: #FF8300;
+		}
+
+		#results{
+			border: ridge 5px #F52;
+		}
+
+		a{
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+			color: #FF8300;
+		}
+
+		a:visited{
+			color: #FF8300;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input id='question' placeholder='type here...'>
+		<button onclick='run()'>Go !</button>
+	</div>
+	<div id='results'></div>
+	<a href="ref.html">En savoir plus sur les sources citées</a>
+</body>
+</html>
+<script src='db.js'></script>
+<script>
+var results = document.getElementById('results');
+var i = 0;
+var values = [];
+var w = "";
+var ans = [];
+var max = 0;
+var str = [];
+function run(){
+	w = document.getElementById('question').value;
+	results.innerHTML = "";
+	str = text.split(/ù/g);
+	for(i = 0 ; i <= str.length-1 ; i++){
+		var exist = str[i].includes(w);
+		if(exist){
+			var reg = new RegExp(w, "g");
+			str[i] = "<p>"+str[i]+"</p>";
+			if(w != ""){
+				str[i] = str[i].replace(reg, "<em>"+w+"</em>");
+			}
+			ans.push(str[i]);
+		}
+	}
+	max = ans.length+1;
+	results.innerHTML += "<p class='res'>"+(max-1)+" resultat(s)</p>";
+	for (i = 0; i < max-1; ++i){
+    	values.push(i);
+	}
+	for(i = 0; i < 5; ++i){
+		if(values != ""){
+			var n = values.splice(Math.random()*values.length,1)[0];
+			results.innerHTML += ans[n];
+		}
+	}
+	ans = [];
+	values = [];
+}
+
+var total = text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
+results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";
+</script>
