@@ -279,7 +279,15 @@ function run(){
 	ans = [];
 	values = [];
 }
-
 var total = text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
 results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";
+
+document.addEventListener('keydown', (event) => {
+	var key = event.which;                
+  switch(key){
+  	case 13:
+   	run();
+		break
+   	}
+});
 </script>
