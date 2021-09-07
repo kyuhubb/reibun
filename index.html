@@ -238,7 +238,7 @@
 	</div>
 	<div id='results'></div>
 	<a href="ref.html">Concernant les sources</a>
-	<span class='update'>last update ー 21/07/2021 23:57 UTC</span>
+	<span class='update'>last update ー 21/07/2021 23:55 UTC</span>
 </body>
 </html>
 <script src='db.js'></script>
@@ -279,7 +279,7 @@ function run(){
 	ans = [];
 	values = [];
 }
-var total = text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
+var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
 results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";
 
 document.addEventListener('keydown', (event) => {
