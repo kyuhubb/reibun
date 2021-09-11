@@ -1,0 +1,43 @@
+html{
+	background: #222;
+	font-family: arial;
+}
+
+body{
+	margin: 0;
+	color: white;
+	min-height: 100vh;
+	transition: background 0.3s;
+}
+
+
+h2{
+	padding: 5px;
+	font-size: 3.0em;
+	margin-top: 20vh;
+}
+
+#grid{
+	display: grid;
+	user-select: none;
+}
+
+.grid-el{
+	text-align: center;
+	height: 49.9vh;
+	transition: all 0.2s;
+}
+
+.grid-el:first-child{
+	border-bottom: 1px #111 solid;
+}
+
+.grid-el:hover{
+	border: none;
+	outline: solid 1vh #A33;
+	cursor: pointer;
+	color: #FFF;
+	background: #A33;
+	text-shadow: -2px 1px black;
+	box-shadow: 0px 8px rgba(100, 0, 0, 0.5), 0px -8px rgba(100, 0, 0, 0.5);
+}

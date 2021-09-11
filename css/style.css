@@ -1,1 +1,221 @@
+body{
+	margin: 50px;
+	background: #222;
+	margin: 30px;
+}
 
+.update{
+	font-size: 0.8em;
+	position: absolute;
+	left: 1vw;
+	top: 1vh;
+	color: #666;
+}
+
+input{
+	width: 70%;
+	height: 5vh;
+	font-size: 1.4em;
+}
+		
+.res{
+	text-align: center!important;
+}
+	
+button{
+	height: 6vh;
+	width: 56px;
+	font-size: 1.3em;
+	border-style: solid;
+}
+
+button:hover{
+	color: #F0F0F0;
+	background: #111;
+}
+
+div{
+	text-align: center;
+	margin: 10px;
+}
+
+p{	
+	font-size: 1.5em;
+	text-align: left;
+	background: #FFF;
+	margin: 0;
+	padding:  10px;
+	color: #FFF;
+	background: #222;
+}
+		
+p:nth-child(2n){
+	background : #444;
+	color:  #FFF;
+}
+
+em{
+	color: #FF8300;
+}
+	
+#results{
+	border: ridge 5px #F52;
+	width: 70vw;
+	margin: auto;
+}
+
+a{
+	position:  fixed;
+	bottom: 5px;
+	right: 5px;
+	color: #FF8300;
+}
+		
+a:visited{
+	color: #FF8300;
+}
+	
+@media (min-width: 381px) and (max-width: 1000px){
+	input{
+		width: 70%;
+	}
+	
+	p{
+		font-size: 1.2em;
+	}
+	body{
+		margin: 30px;
+	}
+}
+
+@media (min-width: 201px) and (max-width: 380px){
+	input{
+		width: 95%;
+	}
+
+	button{
+		display: block;
+		width: 100%;
+		margin: auto;
+		margin-top: 2px;
+	}
+	
+	body{
+		margin: 30px;
+	}
+	p{
+		font-size: 1em;
+	}
+}
+
+@media (min-width: 101px) and(max-width: 200px){
+	p{
+		font-size: 0.6em;
+	}
+	
+	p.res{
+		font-size: 0.7em;
+	}
+			
+	input{
+		width: 70vw;
+		font-size: 0.8em;
+		height: 15px;
+	}
+	
+	button{
+		font-size: 0.8em;
+		width: 75vw;
+		height: 20px;
+		margin-top: 2px;
+	}
+	
+	body{
+		margin: 0;
+		margin-top: 15px;
+	}
+	
+	.update{
+		display: none;
+	}
+	
+	a{
+		display: none;
+	}
+}
+
+@media (max-width: 250px) and (max-height: 450px){
+	p{
+		font-size: 0.6em;
+	}
+	
+	P.res{
+		font-size: 0.7em;
+	}
+		
+	input{
+		width: 70vw;
+		font-size: 0.8em;
+		height: 15px;
+	}
+	
+	button{
+		font-size: 0.8em;
+		width: 75vw;
+		height: 20px;
+		margin-top: 2px;
+	}
+		
+	body{
+		margin: 0;
+		margin-top: 15px;
+	}
+
+	.update{
+		display: none;
+	}
+	
+	a{
+		display: none;
+	}
+}
+
+@media (min-width: 251px) and (min-width: 101px) and (max-height: 450px){
+	input{
+		width: 70vw;
+		font-size: 1.2em;
+		height: 25px;
+	}
+	
+	button{
+		margin: auto;
+		width: 71vw;
+		display: block;
+		height: 25px;
+		margin-top: 2px;
+	}
+}
+		
+@media (max-width: 100px){
+	body{
+		margin: 0;
+	}
+			
+	div{
+		margin: 0;
+	}
+			
+	input{
+		font-size: 0.5em;
+	}
+		
+	button{
+		font-size: 0.7em;
+		margin-bottom: 2px;
+	}
+
+	p.res{
+		font-size: 0.5em;
+		padding: 0px;
+	}
+}
