@@ -1,7 +1,6 @@
 body{
 	margin: 50px;
 	background: #222;
-	margin: 30px;
 }
 
 .update{
@@ -47,6 +46,15 @@ p{
 	padding:  10px;
 	color: #FFF;
 	background: #222;
+	transition: 0.1s;
+}
+
+#results:hover p{
+	opacity: 0.33;
+}
+
+p:hover{
+	opacity: 1!important;
 }
 		
 p:nth-child(2n){
@@ -66,9 +74,18 @@ em{
 
 a{
 	position:  fixed;
+	opacity: 0.75;
 	bottom: 5px;
 	right: 5px;
+	padding: 5px;
 	color: #FF8300;
+	transition: all 0.2s;
+}
+
+a:hover{
+	opacity: 1;
+	background: #222;
+	border-radius: 5px;
 }
 		
 a:visited{
@@ -77,14 +94,20 @@ a:visited{
 	
 @media (min-width: 381px) and (max-width: 1000px){
 	input{
-		width: 70%;
+		width: 81%;
 	}
 	
 	p{
 		font-size: 1.2em;
 	}
 	body{
-		margin: 30px;
+		margin: 0;
+		margin-top: 30px;
+	}
+
+	#results{
+		width: 94vw;
+		margin: auto;
 	}
 }
 
@@ -101,7 +124,8 @@ a:visited{
 	}
 	
 	body{
-		margin: 30px;
+		margin: 0;
+		margin-top: 30px;
 	}
 	p{
 		font-size: 1em;
