@@ -46,7 +46,7 @@ p{
 	padding:  10px;
 	color: #FFF;
 	background: #222;
-	transition: 0.1s;
+	transition: 1s;
 }
 
 #results:hover p{
