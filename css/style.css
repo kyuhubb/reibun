@@ -3,6 +3,22 @@ body{
 	background: #222;
 }
 
+.dif{
+	display: inline-block;
+	width: 20%;
+	color: white;
+	background: #171717;
+	padding: 5px;
+	color: #FF8300;
+	border: 2px solid #333;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.dif:hover{
+	color: #FFAA00;
+}
+
 .update{
 	font-size: 0.8em;
 	position: absolute;
@@ -46,7 +62,20 @@ p{
 	padding:  10px;
 	color: #FFF;
 	background: #222;
-	transition: 1s;
+	transition: 0.5s;
+}
+
+.cred{
+	color: #AAA;
+	cursor: pointer;
+	padding: 2px;
+	background: #333;
+	border-radius: 5px;
+	transition: 0.2s;
+}
+
+.cred:hover{
+	color: #FF8300;
 }
 
 #results:hover p{
@@ -64,6 +93,7 @@ p:nth-child(2n){
 
 em{
 	color: #FF8300;
+	font-style: normal;
 }
 	
 #results{
@@ -73,12 +103,11 @@ em{
 }
 
 a{
-	position:  fixed;
 	opacity: 0.75;
 	bottom: 5px;
 	right: 5px;
 	padding: 5px;
-	color: #FF8300;
+	color: #777;
 	transition: all 0.2s;
 }
 
@@ -89,7 +118,7 @@ a:hover{
 }
 		
 a:visited{
-	color: #FF8300;
+	color: #777;
 }
 	
 @media (min-width: 381px) and (max-width: 1000px){
