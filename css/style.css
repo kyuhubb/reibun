@@ -9,14 +9,14 @@ body{
 	color: white;
 	background: #171717;
 	padding: 5px;
-	color: #FF8300;
+	color: #E6aaff;
 	border: 2px solid #333;
 	border-radius: 5px;
 	cursor: pointer;
 }
 
 .dif:hover{
-	color: #FFAA00;
+	color: #E6aaff;
 }
 
 .update{
@@ -75,7 +75,7 @@ p{
 }
 
 .cred:hover{
-	color: #FF8300;
+	color: #E6aaff;
 }
 
 #results:hover p{
@@ -92,16 +92,15 @@ p:nth-child(2n){
 }
 
 em{
-	color: #FF8300;
 	font-style: normal;
 }
 
 .em2{
-	color: #FF8300;
+	color: #E6aaff;
 }
 	
 #results{
-	border: ridge 5px #F52;
+	border: ridge 5px #E6aaff;
 	width: 70vw;
 	margin: auto;
 }
