@@ -140,6 +140,9 @@ function run(){
 					var reg3 = new RegExp("。", "g");
 					var reg4 = new RegExp("！", "g");
 					var reg5 = new RegExp("？", "g");
+					var reg6 = new RegExp("!", "g");
+					var reg7 = new RegExp("?", "g");
+					var reg8 = new RegExp("」", "g");
 					for(y=0; y < found.length/2; y++){
 						while ((match = reg3.exec(str[i])) != null){
 					    	dotpos.push(match.index);
@@ -152,6 +155,21 @@ function run(){
 					}
 					for(y=0; y < found.length/2; y++){
 						while ((match = reg5.exec(str[i])) != null){
+					    	dotpos.push(match.index);
+						}
+					}
+					for(y=0; y < found.length/2; y++){
+						while ((match = reg6.exec(str[i])) != null){
+					    	dotpos.push(match.index);
+						}
+					}
+					for(y=0; y < found.length/2; y++){
+						while ((match = reg7.exec(str[i])) != null){
+					    	dotpos.push(match.index);
+						}
+					}
+					for(y=0; y < found.length/2; y++){
+						while ((match = reg8.exec(str[i])) != null){
 					    	dotpos.push(match.index);
 						}
 					}
