@@ -187,3 +187,6 @@ text += `§1_001
 
 
 `;
+setTimeout(function() {
+var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
+results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";}, 100);
