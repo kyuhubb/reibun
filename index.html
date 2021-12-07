@@ -23,11 +23,13 @@
 </body>
 </html>
 <script>
+let bookloaded = '0';
 let link = '';
 let credit = "";
 let easy = 2;
 let medium = 2;
 let hard = 3;
+let all = easy + medium + hard;
 var diff = "hard";
 let text = "";
 if($_GET('d')){
@@ -339,4 +341,18 @@ function goto(website){
   		window.open('https://jisho.org/search/'+strToSearch+'#SGKDJ', '_blank');	
 	}
 }
+
+function waiting(){
+	countms = countms+100;
+	console.log(countms+'ms');
+	if(bookloaded == all){
+		var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
+		results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";
+		window.clearInterval(interval);
+		console.log('books loaded !');
+	}
+}
+
+var countms = 0;
+var interval = setInterval(function(){waiting();}, 100);
 </script>
