@@ -1,9 +1,11 @@
 body{
 	margin: 50px;
 	background: #222;
+	font-family: arial;
 }
 
 .dif{
+	user-select: none;
 	display: inline-block;
 	width: 20%;
 	color: white;
@@ -15,11 +17,28 @@ body{
 	cursor: pointer;
 }
 
+#dico{
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 42%;
+	background: #252525;
+	border: 2px #C488DD solid;
+	border-radius: 5px;
+	z-index : 999;
+}
+
+#dico .dif{
+	width: 50px;
+	padding: 7px;
+}
+
 .dif:hover{
-	color: #E6aaff;
+	color: #C488DD;
 }
 
 .update{
+	user-select: none;
 	font-size: 0.8em;
 	position: absolute;
 	left: 1vw;
@@ -125,6 +144,10 @@ a:visited{
 }
 	
 @media (min-width: 381px) and (max-width: 1000px){
+	#dico{
+		left: 25%;
+	}
+
 	input{
 		width: 81%;
 	}

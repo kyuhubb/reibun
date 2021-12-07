@@ -9,6 +9,10 @@
 	<script src='db/credits.js'></script>
 </head>
 <body>
+	<div id='dico'>
+		<div class='dif' onclick='goto("weblio")'>Weblio</div>
+		<div class='dif'onclick='goto("jisho")'>Jisho</div>
+	</div>
 	<div>
 		<input autofocus="true" id='question' placeholder='type here...'>
 		<button onclick='run()'>Go !</button><br>
@@ -21,9 +25,9 @@
 <script>
 let link = '';
 let credit = "";
-let easy = 4;
-let medium = 3;
-let hard = 0;
+let easy = 2;
+let medium = 2;
+let hard = 3;
 var diff = "hard";
 let text = "";
 if($_GET('d')){
@@ -264,14 +268,17 @@ function run(){
 	}
 }
 
-document.addEventListener('keydown', (event) => {
+document.getElementById('question').addEventListener('keydown', (event) => {
 	var key = event.which;                
-  switch(key){
-  	case 13:
-   	run();
+ 	switch(key){
+  		case 13:
+   		run();
 		break
+   		}
    	}
-});
+);
+
+document.onclick = function(){searchSel(event)};
 
 function setDif(n){
 	var easy = document.getElementById('easy');
@@ -304,6 +311,32 @@ function setDif(n){
 		medium.style.color = '#E6aaff';
 		medium.style.background = '#171717';
 		load();
+	}
+}
+
+function searchSel(){
+  text = "";
+  if(window.getSelection){
+    text = window.getSelection().toString();
+  }
+  if(text != ""){
+  	var maxy = document.getElementsByTagName('body')[0].clientHeight;
+  	var y = event.clientY;
+  	var yadjust = 125 / maxy * 100;
+  	y = y / maxy * 100 - yadjust;
+  	dico.style.top = y+'vh';
+  	dico.style.display = 'block';
+  }else{
+  	dico.style.display = 'none';
+  }
+}
+
+function goto(website){
+	question.focus()
+	if(website == 'weblio'){
+  		window.open('https://www.weblio.jp/content/'+text, '_blank');	
+	}else{
+  		window.open('https://jisho.org/search/'+text+'#SGKDJ', '_blank');	
 	}
 }
 </script>
