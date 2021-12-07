@@ -318,7 +318,6 @@ function setDif(n){
 }
 
 function searchSel(){
-  strToSearch = "";
   if(window.getSelection){
     strToSearch = window.getSelection().toString();
   }
@@ -335,6 +334,7 @@ function searchSel(){
 }
 
 function goto(website){
+  strToSearch = window.getSelection().toString();
 	question.focus()
 	if(website == 'weblio'){
   		window.open('https://www.weblio.jp/content/'+strToSearch, '_blank');	
