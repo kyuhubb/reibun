@@ -281,6 +281,7 @@ document.addEventListener('keydown', (event) => {
 );
 
 document.onclick = function(){searchSel(event)};
+document.touchstart = function(){searchSel(event)};
 
 function setDif(n){
 	var easy = document.getElementById('easy');
