@@ -64,6 +64,7 @@ input{
 		
 .res{
 	text-align: center!important;
+	user-select: none;
 }
 	
 button{
