@@ -71,9 +71,6 @@ function load(){
 		}
 		break
 	}
-	setTimeout(function(){
-	var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
-	results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";}, 500);
 }
 
 function run(){
@@ -315,11 +312,11 @@ function setDif(n){
 }
 
 function searchSel(){
-  text = "";
+  strToSearch = "";
   if(window.getSelection){
-    text = window.getSelection().toString();
+    strToSearch = window.getSelection().toString();
   }
-  if(text != ""){
+  if(strToSearch != ""){
   	var maxy = document.getElementsByTagName('body')[0].clientHeight;
   	var y = event.clientY;
   	var yadjust = 125 / maxy * 100;
