@@ -1,3 +1,13 @@
+::selection{
+	color: black;
+	background: #e6aaff;
+}
+
+::-moz-selection{
+	color: black;
+	background: #e6aaff;
+}
+
 body{
 	margin: 50px;
 	background: #222;
