@@ -34,5 +34,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/%E3%83%96%E3%82%AE%E3%83%BC%E3%83%9D%E3%83%83%E3%83%97%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%BA-VS%E3%82%A4%E3%83%9E%E3%82%B8%E3%83%8D%E3%83%BC%E3%82%BF%E3%83%BCPart2-%E9%9B%BB%E6%92%83%E6%96%87%E5%BA%AB-%E4%B8%8A%E9%81%A0%E9%87%8E-%E6%B5%A9%E5%B9%B3-ebook/dp/B00QWGZ0AG/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E3%83%96%E3%82%AE%E3%83%BC%E3%83%9D%E3%83%83%E3%83%97%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%BA+VS%E3%82%A4%E3%83%9E%E3%82%B8%E3%83%8D%E3%83%BC%E3%82%BF%E3%83%BCPart2&qid=1637629609&sr=8-1";
 		return "ブギーポップ・リターンズ VS　イマジネーターPart2";
 		break
+
+		case '3_004':
+		link = "https://www.amazon.co.jp/%E9%AD%94%E5%A5%B3%E3%81%AE%E6%97%85%E3%80%85-GA%E3%83%8E%E3%83%99%E3%83%AB-%E7%99%BD%E7%9F%B3-%E5%AE%9A%E8%A6%8F-ebook/dp/B01DK0TRFK/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E9%AD%94%E5%A5%B3%E3%81%AE%E6%97%85%E3%80%85+%28GA%E3%83%8E%E3%83%99%E3%83%AB%29&qid=1639263665&s=books&sr=1-1";
+		return "魔女の旅々(GAノベル) | 第一巻";
+		break
 	}
 }
