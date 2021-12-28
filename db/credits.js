@@ -20,6 +20,11 @@ function getC(credit){
 		return "この素晴らしい世界に祝福を！ | 第二巻";
 		break
 
+		case '1_005':
+		link = "https://www.amazon.co.jp/gp/product/B00JMAIA6K";
+		return "この素晴らしい世界に祝福を！ | 第三巻";
+		break
+
 		case '2_001':
 		link = "https://www.amazon.co.jp/gp/product/4061388126";
 		return "ダンガンロンパ/ゼロ| 第一巻(上)";
