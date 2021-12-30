@@ -54,5 +54,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/gp/product/B01DK0TRFK";
 		return "魔女の旅々(GAノベル) | 第一巻";
 		break
+
+		case '3_005':
+		link = "https://www.amazon.co.jp/gp/product/B01HR6E2VM";
+		return "魔女の旅々(GAノベル) | 第二巻";
+		break
 	}
 }
