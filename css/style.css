@@ -14,6 +14,19 @@ body{
 	font-family: arial;
 }
 
+#explanations{
+	border: ridge 5px #444;
+	border-top: none;
+	color: white;
+	width: 70vw;
+	margin: auto;
+}
+
+.exp{
+	font-size: 1em;
+	padding: 25px;
+}
+
 .dif{
 	user-select: none;
 	display: inline-block;
@@ -171,7 +184,7 @@ a:visited{
 		margin-top: 30px;
 	}
 
-	#results{
+	#results, #explanations{
 		width: 94vw;
 		margin: auto;
 	}

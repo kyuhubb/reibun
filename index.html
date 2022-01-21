@@ -19,7 +19,17 @@
 		<div class='dif' id='easy' onclick='setDif(1)'>Easy</div><div class='dif' id='medium' onclick='setDif(2)'>Medium</div><div class='dif' id='hard' onclick='setDif(3)'>Hard</div>
 	</div>
 	<div id='results'></div>
-	<span class='update'>last update ー 30/12/2021 22:02 UTC <a href="https://kyuchama.github.io/">portail vers les autres sites</a></span>
+	<div id='explanations'>
+		<p class='exp'>Reibun is a tool that allows you to find <b>example sentences</b> extracted from japanese light novels<br><br>
+			Difficulty levels will filter results according to the estimated global difficulty of the volumes from which the sentences comes from. Higher difficulties will also include results from lower difficulties as well.
+
+			<br><br><b>2 expressions searches</b> :
+			<br>[ word ]+[ word ]<br>- only sentences containing both words and in this exact order will be display.
+			<br><br>if a given sentence is too short additional context will be added before and after the main sentence.
+			<br><br>You can now <b>higlight</b> words, a small menu will then appear so you can search it on jisho or weblio (double tap on mobile).
+		</p>
+	</div>
+	<span class='update'>last update ー 30/12/2021 22:02 UTC</span>
 </body>
 </html>
 <script>
@@ -76,6 +86,7 @@ function load(){
 }
 
 function run(){
+	document.getElementById('explanations').style.display = 'none';
 	var nc = 0;
 	w = document.getElementById('question').value;
 	w = w.replace('?', '');
@@ -347,7 +358,7 @@ function waiting(){
 	console.log(countms+'ms');
 	if(bookloaded == all){
 		var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
-		results.innerHTML = "<p class='res'>Total actuel : "+total+"</p>";
+		results.innerHTML = "<p class='res'>Total sentences : "+total+"</p>";
 		window.clearInterval(interval);
 		console.log('books loaded !');
 	}
