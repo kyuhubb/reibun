@@ -60,7 +60,7 @@ function getC(credit){
 		return "ダンガンロンパ/ゼロ| 第一巻(上)";
 		break
 
-		case '2_0010':
+		case '2_010':
 		link = "https://www.amazon.co.jp/gp/product/B00QWGYZY8";
 		return "ブギーポップ・リターンズ　VS　イマジネーターPart1";
 		break
