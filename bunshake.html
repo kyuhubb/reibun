@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>難度シェーカー</title>
+	<style type="text/css">
+		body{
+			background: #222;
+			font-family: consolas;
+		}
+
+		.skuare{
+			margin: auto;
+			margin-top: 5vh;
+			width: 85%;
+			background: #434;
+			color: ghostwhite;
+			padding: 10px;
+			border-radius: 5px;
+			border: ridge grey 2px;
+			font-size: 1.2em;
+		}
+
+		#ungai, #unchuu, #unshou{
+			background: #545;
+			color: darkgrey;
+			padding: 2px;
+		}
+
+		button{
+			background: #434;
+			color: ghostwhite;
+			padding: 10px;
+			border-radius: 2px;
+			border: 2px black ridge;
+		}
+
+		.purple{
+			background: mediumpurple;
+			padding: 2px;
+			border-radius: 2px;
+			color: ghostwhite;
+		}
+
+		.red{
+			color: #F44;
+		}
+
+		.green{
+			color: powderblue;
+		}
+
+		#indice{
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<textarea id='text'></textarea><br><br>
+		<button onclick='run()'>Analyse</button>
+		<div class='skuare'>
+			<span class='purple'>かな</span>  <span id='1'>0</span><br>
+			ひらがな</span> <span id='2'>0</span>　
+			カタカナ</span>　<span id='3'>0</span><br><br>
+			<span class='purple'>漢字</span>　<span id='4'>0</span><br>
+			常用　<span id='5'>0</span>　外　<span id='10'>0</span><br><br>
+			小　<span id='6'>0</span>　
+			中　<span id='7'>0</span><br><br>
+			<span class='purple'>総計</span>　<span id='9'>0</span><br>
+		</div>
+		<div class='skuare'>
+			<span id='difficulty' class='purple'>not rated</span><br><br>
+			<span class='purple'>indice</span>　<span id='indice'>0</span><br>
+			<br>小　<span class='green' id='shoud'>0</span><br>中　<span class='red' id='chuud'>0</span><br>外　<span class='red' id='gaid'>0</span>
+		</div>
+	</center>
+</body>
+<script>
+
+function run(){
+	let tot = 0;
+	let kana = 0;
+	let hiragana = 0;
+	let katakana = 0;
+	let kanji = 0;
+	let shou = 0;
+	let chuu = 0;
+	let joyo = 0;
+	let unchuun = 0;
+	let unchuu = [];
+	let ungain = 0;
+	let ungai = [];
+	let unshoun = 0;
+	let unshou = [];
+	let tf = false
+	let text = document.getElementById('text');
+	let deguchi = '';
+	char = text.value;
+	for(i=0; char.length > i;i++){
+		switch(char[i]){
+			case '々':
+			tot++;
+			break
+
+			case 'あ': case 'い': case 'う': case 'え': case 'お': case 'か': case 'き': case 'く': case 'け': case 'こ': case 'さ': case 'し': case 'す': case 'せ': case 'そ': case 'た': case 'ち': case 'つ': case 'て': case 'と': case 'な': case 'に': case 'ぬ': case 'ね': case 'の': case 'は': case 'ひ': case 'ふ': case 'へ': case 'ほ': case 'ま': case 'み': case 'む': case 'め': case 'も': case 'や': case 'ゆ': case 'よ': case 'ら': case 'り': case 'る': case 'れ': case 'ろ': case 'わ': case 'を': case 'ゐ': case 'ゑ': case 'ん': case 'ゃ': case 'ゅ': case 'ょ': case 'が': case 'ぎ': case 'ぐ': case 'げ': case 'ご': case 'ざ': case 'じ': case 'ず': case 'ぜ': case 'ぞ': case 'だ': case 'ぢ': case 'づ': case 'で': case 'ど': case 'ば': case 'び': case 'ぶ': case 'べ': case 'ぼ': case 'ぱ': case 'ぴ': case 'ぷ': case 'ぺ': case 'ぽ': case 'っ': case 'ぁ': case 'ぃ': case 'ぅ': case 'ぇ': case 'ぉ': case 'ゔ':
+			tot++;
+			kana++;
+			hiragana++;
+			break
+
+			case 'ア': case 'イ': case 'ウ': case 'エ': case 'オ': case 'カ': case 'キ': case 'ク': case 'ケ': case 'コ': case 'サ': case 'シ': case 'ス': case 'セ': case 'ソ': case 'タ': case 'チ': case 'ツ': case 'テ': case 'ト': case 'ナ': case 'ニ': case 'ヌ': case 'ネ': case 'ノ': case 'ハ': case 'ヒ': case 'フ': case 'ヘ': case 'ホ': case 'マ': case 'ミ': case 'ム': case 'メ': case 'モ': case 'ヤ': case 'ユ': case 'ヨ': case 'ラ': case 'リ': case 'ル': case 'レ': case 'ロ': case 'ワ': case 'ヲ': case 'ヰ': case 'ヱ': case 'ン': case 'ャ': case 'ュ': case 'ョ': case 'ガ': case 'ギ': case 'グ': case 'ゲ': case 'ゴ': case 'ザ': case 'ジ': case 'ズ': case 'ゼ': case 'ゾ': case 'ダ': case 'ヂ': case 'ヅ': case 'デ': case 'ド': case 'バ': case 'ビ': case 'ブ': case 'ベ': case 'ボ': case 'パ': case 'ピ': case 'プ': case 'ペ': case 'ポ': case 'ー': case 'ッ': case '〝': case '〟': case 'ヴ': case 'ォ': case 'ェ': case 'ゥ': case 'ィ': case 'ァ': case 'ｶ':case 'ｷ':case 'ｸ':case 'ｹ':case 'ｺ': case 'ｻ':case 'ｼ':case 'ｽ':case 'ｾ':case 'ｿ': case 'ﾀ':case 'ﾁ':case 'ﾂ':case 'ﾃ':case 'ﾄ':case 'ﾅ':case 'ﾆ':case 'ﾇ':case 'ﾈ':case 'ﾉ':case 'ﾊ':case 'ﾋ':case 'ﾌ':case 'ﾍ':case 'ﾎ':case 'ﾏ':case 'ﾐ':case 'ﾑ':case 'ﾒ':case 'ﾓ':case 'ﾔ':case 'ﾕ':case 'ﾖ':case 'ｬ':case 'ｭ':case 'ｮ':case 'ｧ':case 'ｨ':case 'ｩ':case 'ｪ':case 'ォ':case 'ﾗ':case 'ﾘ':case 'ﾙ':case 'ﾚ':case 'ﾛ':case 'ﾜ':case 'ｦ':case 'ﾝ':case'ヶ':case'ヵ':
+			tot++;
+			kana++;
+			katakana++;
+			break
+
+			case '一': case '右': case '雨': case '円': case '王': case '音': case '下': case '火': case '花': case '貝': case '学': case '気': case '九': case '休': case '玉': case '金': case '空': case '月': case '犬': case '見': case '五': case '口': case '校': case '左': case '三': case '山': case '子': case '四': case '糸': case '字': case '耳': case '七': case '車': case '手': case '十': case '出': case '女': case '小': case '上': case '森': case '人': case '水': case '正': case '生': case '青': case '夕': case '石': case '赤': case '千': case '川': case '先': case '早': case '草': case '足': case '村': case '大': case '男': case '竹': case '中': case '虫': case '町': case '天': case '田': case '土': case '二': case '日': case '入': case '年': case '白': case '八': case '百': case '文': case '木': case '本': case '名': case '目': case '立': case '力': case '林': case '六': case '引': case '羽': case '雲': case '園': case '遠': case '何': case '科': case '夏': case '家': case '歌': case '画': case '回': case '会': case '海': case '絵': case '外': case '角': case '楽': case '活': case '間': case '丸': case '岩': case '顔': case '汽': case '記': case '帰': case '弓': case '牛': case '魚': case '京': case '強': case '教': case '近': case '兄': case '形': case '計': case '元': case '言': case '原': case '戸': case '古': case '午': case '後': case '語': case '工': case '公': case '広': case '交': case '光': case '考': case '行': case '高': case '黄': case '合': case '谷': case '国': case '黒': case '今': case '才': case '細': case '作': case '算': case '止': case '市': case '矢': case '姉': case '思': case '紙': case '寺': case '自': case '時': case '室': case '社': case '弱': case '首': case '秋': case '週': case '春': case '書': case '少': case '場': case '色': case '食': case '心': case '新': case '親': case '図': case '数': case '西': case '声': case '星': case '晴': case '切': case '雪': case '船': case '線': case '前': case '組': case '走': case '多': case '太': case '体': case '台': case '地': case '池': case '知': case '茶': case '昼': case '長': case '鳥': case '朝': case '直': case '通': case '弟': case '店': case '点': case '電': case '刀': case '冬': case '当': case '東': case '答': case '頭': case '同': case '道': case '読': case '内': case '南': case '肉': case '馬': case '売': case '買': case '麦': case '半': case '番': case '父': case '風': case '分': case '聞': case '米': case '歩': case '母': case '方': case '北': case '毎': case '妹': case '万': case '明': case '鳴': case '毛': case '門': case '夜': case '野': case '友': case '用': case '曜': case '来': case '里': case '理': case '話': case '悪': case '安': case '暗': case '医': case '委': case '意': case '育': case '員': case '院': case '飲': case '運': case '泳': case '駅': case '央': case '横': case '屋': case '温': case '化': case '荷': case '界': case '開': case '階': case '寒': case '感': case '漢': case '館': case '岸': case '起': case '期': case '客': case '究': case '急': case '級': case '宮': case '球': case '去': case '橋': case '業': case '曲': case '局': case '銀': case '区': case '苦': case '具': case '君': case '係': case '軽': case '血': case '決': case '研': case '県': case '庫': case '湖': case '向': case '幸': case '港': case '号': case '根': case '祭': case '皿': case '仕': case '死': case '使': case '始': case '指': case '歯': case '詩': case '次': case '事': case '持': case '式': case '実': case '写': case '者': case '主': case '守': case '取': case '酒': case '受': case '州': case '拾': case '終': case '習': case '集': case '住': case '重': case '宿': case '所': case '暑': case '助': case '昭': case '消': case '商': case '章': case '勝': case '乗': case '植': case '申': case '身': case '神': case '真': case '深': case '進': case '世': case '整': case '昔': case '全': case '相': case '送': case '想': case '息': case '速': case '族': case '他': case '打': case '対': case '待': case '代': case '第': case '題': case '炭': case '短': case '談': case '着': case '注': case '柱': case '丁': case '帳': case '調': case '追': case '定': case '庭': case '笛': case '鉄': case '転': case '都': case '度': case '投': case '豆': case '島': case '湯': case '登': case '等': case '動': case '童': case '農': case '波': case '配': case '倍': case '箱': case '畑': case '発': case '反': case '坂': case '板': case '皮': case '悲': case '美': case '鼻': case '筆': case '氷': case '表': case '秒': case '病': case '品': case '負': case '部': case '服': case '福': case '物': case '平': case '返': case '勉': case '放': case '味': case '命': case '面': case '問': case '役': case '薬': case '由': case '油': case '有': case '遊': case '予': case '羊': case '洋': case '葉': case '陽': case '様': case '落': case '流': case '旅': case '両': case '緑': case '礼': case '列': case '練': case '路': case '和': case '愛': case '案': case '以': case '衣': case '位': case '印': case '英': case '栄': case '塩': case '億': case '加': case '果': case '貨': case '課': case '芽': case '改': case '械': case '害': case '街': case '各': case '覚': case '完': case '官': case '管': case '関': case '観': case '願': case '希': case '季': case '旗': case '器': case '機': case '議': case '求': case '泣': case '給': case '挙': case '漁': case '共': case '協': case '鏡': case '競': case '極': case '訓': case '軍': case '郡': case '径': case '景': case '芸': case '欠': case '結': case '建': case '健': case '験': case '固': case '功': case '好': case '候': case '康': case '差': case '菜': case '最': case '材': case '昨': case '札': case '刷': case '察': case '参': case '産': case '散': case '残': case '氏': case '司': case '試': case '児': case '治': case '辞': case '失': case '借': case '種': case '周': case '祝': case '順': case '初': case '松': case '笑': case '唱': case '焼': case '照': case '臣': case '信': case '成': case '省': case '清': case '静': case '席': case '積': case '折': case '節': case '説': case '浅': case '戦': case '選': case '然': case '争': case '倉': case '巣': case '束': case '側': case '続': case '卒': case '孫': case '帯': case '隊': case '達': case '単': case '置': case '仲': case '兆': case '低': case '底': case '的': case '典': case '伝': case '徒': case '努': case '灯': case '働': case '特': case '熱': case '念': case '敗': case '梅': case '博': case '飯': case '飛': case '必': case '票': case '標': case '不': case '夫': case '付': case '府': case '副': case '兵': case '別': case '辺': case '変': case '便': case '包': case '法': case '望': case '牧': case '末': case '満': case '未': case '民': case '無': case '約': case '勇': case '要': case '養': case '浴': case '利': case '陸': case '良': case '料': case '量': case '輪': case '類': case '令': case '冷': case '例': case '連': case '老': case '労': case '録': case '賀': case '群': case '徳': case '富': case '城': case '茨': case '媛': case '岡': case '潟': case '岐': case '熊': case '香': case '佐': case '埼': case '崎': case '滋': case '鹿': case '縄': case '井': case '沖': case '栃': case '奈': case '梨': case '阪': case '阜': case '囲': case '紀': case '喜': case '救': case '型': case '航': case '告': case '殺': case '士': case '史': case '象': case '賞': case '貯': case '停': case '堂': case '得': case '毒': case '費': case '粉': case '脈': case '歴': case '圧': case '移': case '因': case '永': case '営': case '衛': case '易': case '益': case '液': case '演': case '応': case '往': case '桜': case '可': case '仮': case '価': case '河': case '過': case '解': case '格': case '確': case '額': case '刊': case '幹': case '慣': case '眼': case '基': case '寄': case '規': case '技': case '義': case '逆': case '久': case '旧': case '居': case '許': case '境': case '均': case '禁': case '句': case '経': case '潔': case '件': case '険': case '検': case '限': case '現': case '減': case '故': case '個': case '護': case '効': case '厚': case '耕': case '鉱': case '構': case '興': case '講': case '混': case '査': case '再': case '災': case '妻': case '採': case '際': case '在': case '財': case '罪': case '雑': case '酸': case '賛': case '支': case '志': case '枝': case '師': case '資': case '飼': case '示': case '似': case '識': case '質': case '舎': case '謝': case '授': case '修': case '述': case '術': case '準': case '序': case '招': case '証': case '条': case '状': case '常': case '情': case '織': case '職': case '制': case '性': case '政': case '勢': case '精': case '製': case '税': case '責': case '績': case '接': case '設': case '絶': case '祖': case '素': case '総': case '造': case '像': case '増': case '則': case '測': case '属': case '率': case '損': case '貸': case '態': case '団': case '断': case '築': case '張': case '提': case '程': case '適': case '統': case '銅': case '導': case '独': case '任': case '燃': case '能': case '破': case '犯': case '判': case '版': case '比': case '肥': case '非': case '備': case '評': case '貧': case '布': case '婦': case '武': case '復': case '複': case '仏': case '編': case '弁': case '保': case '墓': case '報': case '豊': case '防': case '貿': case '暴': case '務': case '夢': case '迷': case '綿': case '輸': case '余': case '容': case '略': case '留': case '領': case '快': case '胃': case '腸': case '恩': case '券': case '承': case '舌': case '銭': case '退': case '敵': case '俵': case '預': case '異': case '遺': case '域': case '宇': case '映': case '延': case '沿': case '我': case '灰': case '拡': case '革': case '閣': case '割': case '株': case '干': case '巻': case '看': case '簡': case '危': case '机': case '貴': case '疑': case '吸': case '供': case '胸': case '郷': case '勤': case '筋': case '系': case '敬': case '警': case '劇': case '激': case '穴': case '絹': case '権': case '憲': case '源': case '厳': case '己': case '呼': case '誤': case '后': case '孝': case '皇': case '紅': case '降': case '鋼': case '刻': case '穀': case '骨': case '困': case '砂': case '座': case '済': case '裁': case '策': case '冊': case '蚕': case '至': case '私': case '姿': case '視': case '詞': case '誌': case '磁': case '射': case '捨': case '尺': case '若': case '樹': case '収': case '宗': case '就': case '衆': case '従': case '縦': case '縮': case '熟': case '純': case '処': case '署': case '諸': case '除': case '将': case '傷': case '障': case '蒸': case '針': case '仁': case '垂': case '推': case '寸': case '盛': case '聖': case '誠': case '宣': case '専': case '泉': case '洗': case '染': case '善': case '奏': case '窓': case '創': case '装': case '層': case '操': case '蔵': case '臓': case '存': case '尊': case '宅': case '担': case '探': case '誕': case '段': case '暖': case '値': case '宙': case '忠': case '著': case '庁': case '頂': case '潮': case '賃': case '痛': case '展': case '討': case '党': case '糖': case '届': case '難': case '乳': case '認': case '納': case '脳': case '派': case '拝': case '背': case '肺': case '俳': case '班': case '晩': case '否': case '批': case '秘': case '腹': case '奮': case '並': case '陛': case '閉': case '片': case '補': case '暮': case '宝': case '訪': case '亡': case '忘': case '棒': case '枚': case '幕': case '密': case '盟': case '模': case '訳': case '郵': case '優': case '幼': case '欲': case '翌': case '乱': case '卵': case '覧': case '裏': case '律': case '臨': case '朗': case '論': case '揮': 
+				tot++;
+				kanji++;
+				joyo++;
+				shou++;
+				for(x=0;unshou.length+1+1 > x;x++){
+					if(unshou[x] != char[i]){
+						tf = false;
+					}else{
+						tf = true;
+						x = 999999999;
+					}
+				}
+				if(tf == false){
+					unshoun++;
+					unshou += char[i];
+				}
+				break
+
+				case '亜': case '哀': case '挨': case '曖': case '握': case '扱': case '宛': case '嵐': case '依': case '威': case '為': case '畏': case '尉': case '萎': case '偉': case '椅': case '彙': case '違': case '維': case '慰': case '緯': case '壱': case '逸': case '芋': case '咽': case '姻': case '淫': case '陰': case '隠': case '韻': case '唄': case '鬱': case '畝': case '浦': case '詠': case '影': case '鋭': case '疫': case '悦': case '越': case '謁': case '閲': case '炎': case '怨': case '宴': case '援': case '煙': case '猿': case '鉛': case '縁': case '艶': case '汚': case '凹': case '押': case '旺': case '欧': case '殴': case '翁': case '奥': case '憶': case '臆': case '虞': case '乙': case '俺': case '卸': case '穏': case '佳': case '苛': case '架': case '華': case '菓': case '渦': case '嫁': case '暇': case '禍': case '靴': case '寡': case '箇': case '稼': case '蚊': case '牙': case '瓦': case '雅': case '餓': case '介': case '戒': case '怪': case '拐': case '悔': case '皆': case '塊': case '楷': case '潰': case '壊': case '懐': case '諧': case '劾': case '崖': case '涯': case '慨': case '蓋': case '該': case '概': case '骸': case '垣': case '柿': case '核': case '殻': case '郭': case '較': case '隔': case '獲': case '嚇': case '穫': case '岳': case '顎': case '掛': case '括': case '喝': case '渇': case '葛': case '滑': case '褐': case '轄': case '且': case '釜': case '鎌': case '刈': case '甘': case '汗': case '缶': case '肝': case '冠': case '陥': case '乾': case '勘': case '患': case '貫': case '喚': case '堪': case '換': case '敢': case '棺': case '款': case '閑': case '勧': case '寛': case '歓': case '監': case '緩': case '憾': case '還': case '環': case '韓': case '艦': case '鑑': case '含': case '玩': case '頑': case '企': case '伎': case '忌': case '奇': case '祈': case '軌': case '既': case '飢': case '鬼': case '亀': case '幾': case '棋': case '棄': case '毀': case '畿': case '輝': case '騎': case '宜': case '偽': case '欺': case '儀': case '戯': case '擬': case '犠': case '菊': case '吉': case '喫': case '詰': case '却': case '脚': case '虐': case '及': case '丘': case '朽': case '臼': case '糾': case '嗅': case '窮': case '巨': case '拒': case '拠': case '虚': case '距': case '御': case '凶': case '叫': case '狂': case '享': case '況': case '峡': case '挟': case '狭': case '恐': case '恭': case '脅': case '矯': case '響': case '驚': case '仰': case '暁': case '凝': case '巾': case '斤': case '菌': case '琴': case '僅': case '緊': case '錦': case '謹': case '襟': case '吟': case '駆': case '惧': case '愚': case '偶': case '遇': case '隅': case '串': case '屈': case '掘': case '窟': case '繰': case '勲': case '薫': case '刑': case '茎': case '契': case '恵': case '啓': case '掲': case '渓': case '蛍': case '傾': case '携': case '継': case '詣': case '慶': case '憬': case '稽': case '憩': case '鶏': case '迎': case '鯨': case '隙': case '撃': case '桁': case '傑': case '肩': case '倹': case '兼': case '剣': case '拳': case '軒': case '圏': case '堅': case '嫌': case '献': case '遣': case '賢': case '謙': case '鍵': case '繭': case '顕': case '懸': case '幻': case '玄': case '弦': case '舷': case '股': case '虎': case '孤': case '弧': case '枯': case '雇': case '誇': case '鼓': case '錮': case '顧': case '互': case '呉': case '娯': case '悟': case '碁': case '勾': case '孔': case '巧': case '甲': case '江': case '坑': case '抗': case '攻': case '更': case '拘': case '肯': case '侯': case '恒': case '洪': case '荒': case '郊': case '貢': case '控': case '梗': case '喉': case '慌': case '硬': case '絞': case '項': case '溝': case '綱': case '酵': case '稿': case '衡': case '購': case '乞': case '拷': case '剛': case '傲': case '豪': case '克': case '酷': case '獄': case '駒': case '込': case '頃': case '昆': case '恨': case '婚': case '痕': case '紺': case '魂': case '墾': case '懇': case '沙': case '唆': case '詐': case '鎖': case '挫': case '采': case '砕': case '宰': case '栽': case '彩': case '斎': case '債': case '催': case '塞': case '歳': case '載': case '剤': case '削': case '柵': case '索': case '酢': case '搾': case '錯': case '咲': case '刹': case '拶': case '撮': case '擦': case '桟': case '惨': case '傘': case '斬': case '暫': case '旨': case '伺': case '刺': case '祉': case '肢': case '施': case '恣': case '脂': case '紫': case '嗣': case '雌': case '摯': case '賜': case '諮': case '侍': case '慈': case '餌': case '璽': case '軸': case '�': case '�': case '疾': case '執': case '湿': case '嫉': case '漆': case '芝': case '赦': case '斜': case '煮': case '遮': case '邪': case '蛇': case '酌': case '釈': case '爵': case '寂': case '朱': case '狩': case '殊': case '珠': case '腫': case '趣': case '寿': case '呪': case '需': case '儒': case '囚': case '舟': case '秀': case '臭': case '袖': case '羞': case '愁': case '酬': case '醜': case '蹴': case '襲': case '汁': case '充': case '柔': case '渋': case '銃': case '獣': case '叔': case '淑': case '粛': case '塾': case '俊': case '瞬': case '旬': case '巡': case '盾': case '准': case '殉': case '循': case '潤': case '遵': case '庶': case '緒': case '如': case '叙': case '徐': case '升': case '召': case '匠': case '床': case '抄': case '肖': case '尚': case '昇': case '沼': case '宵': case '症': case '祥': case '称': case '渉': case '紹': case '訟': case '掌': case '晶': case '焦': case '硝': case '粧': case '詔': case '奨': case '詳': case '彰': case '憧': case '衝': case '償': case '礁': case '鐘': case '丈': case '冗': case '浄': case '剰': case '畳': case '壌': case '嬢': case '錠': case '譲': case '醸': case '拭': case '殖': case '飾': case '触': case '嘱': case '辱': case '尻': case '伸': case '芯': case '辛': case '侵': case '津': case '唇': case '娠': case '振': case '浸': case '紳': case '診': case '寝': case '慎': case '審': case '震': case '薪': case '刃': case '尽': case '迅': case '甚': case '陣': case '尋': case '腎': case '須': case '吹': case '炊': case '帥': case '粋': case '衰': case '酔': case '遂': case '睡': case '穂': case '随': case '髄': case '枢': case '崇': case '据': case '杉': case '裾': case '瀬': case '是': case '姓': case '征': case '斉': case '牲': case '凄': case '逝': case '婿': case '誓': case '請': case '醒': case '斥': case '析': case '脊': case '隻': case '惜': case '戚': case '跡': case '籍': case '拙': case '窃': case '摂': case '仙': case '占': case '扇': case '栓': case '旋': case '煎': case '羨': case '腺': case '詮': case '践': case '箋': case '潜': case '遷': case '薦': case '繊': case '鮮': case '禅': case '漸': case '膳': case '繕': case '狙': case '阻': case '租': case '措': case '粗': case '疎': case '訴': case '塑': case '遡': case '礎': case '双': case '壮': case '荘': case '捜': case '挿': case '桑': case '掃': case '曹': case '曽': case '爽': case '喪': case '痩': case '葬': case '僧': case '遭': case '槽': case '踪': case '燥': case '霜': case '騒': case '藻': case '憎': case '贈': case '即': case '促': case '捉': case '俗': case '賊': case '遜': case '汰': case '妥': case '唾': case '堕': case '惰': case '駄': case '耐': case '怠': case '胎': case '泰': case '堆': case '袋': case '逮': case '替': case '滞': case '戴': case '滝': case '択': case '沢': case '卓': case '拓': case '託': case '濯': case '諾': case '濁': case '但': case '脱': case '奪': case '棚': case '誰': case '丹': case '旦': case '胆': case '淡': case '嘆': case '端': case '綻': case '鍛': case '弾': case '壇': case '恥': case '致': case '遅': case '痴': case '稚': case '緻': case '畜': case '逐': case '蓄': case '秩': case '窒': case '嫡': case '抽': case '衷': case '酎': case '鋳': case '駐': case '弔': case '挑': case '彫': case '眺': case '釣': case '貼': case '超': case '跳': case '徴': case '嘲': case '澄': case '聴': case '懲': case '勅': case '捗': case '沈': case '珍': case '朕': case '陳': case '鎮': case '椎': case '墜': case '塚': case '漬': case '坪': case '爪': case '鶴': case '呈': case '廷': case '抵': case '邸': case '亭': case '貞': case '帝': case '訂': case '逓': case '偵': case '堤': case '艇': case '締': case '諦': case '泥': case '摘': case '滴': case '溺': case '迭': case '哲': case '徹': case '撤': case '添': case '塡': case '殿': case '斗': case '吐': case '妬': case '途': case '渡': case '塗': case '賭': case '奴': case '怒': case '到': case '逃': case '倒': case '凍': case '唐': case '桃': case '透': case '悼': case '盗': case '陶': case '塔': case '搭': case '棟': case '痘': case '筒': case '稲': case '踏': case '謄': case '藤': case '闘': case '騰': case '洞': case '胴': case '瞳': case '峠': case '匿': case '督': case '篤': case '凸': case '突': case '屯': case '豚': case '頓': case '貪': case '鈍': case '曇': case '丼': case '那': case '謎': case '鍋': case '軟': case '尼': case '弐': case '匂': case '虹': case '尿': case '妊': case '忍': case '寧': case '捻': case '粘': case '悩': case '濃': case '把': case '覇': case '婆': case '罵': case '杯': case '排': case '廃': case '輩': case '培': case '陪': case '媒': case '賠': case '伯': case '拍': case '泊': case '迫': case '剝': case '舶': case '薄': case '漠': case '縛': case '爆': case '箸': case '肌': case '鉢': case '髪': case '伐': case '抜': case '罰': case '閥': case '氾': case '帆': case '汎': case '伴': case '畔': case '般': case '販': case '斑': case '搬': case '煩': case '頒': case '範': case '繁': case '藩': case '蛮': case '盤': case '妃': case '彼': case '披': case '卑': case '疲': case '被': case '扉': case '碑': case '罷': case '避': case '尾': case '眉': case '微': case '膝': case '肘': case '匹': case '泌': case '姫': case '漂': case '苗': case '描': case '猫': case '浜': case '賓': case '頻': case '敏': case '瓶': case '扶': case '怖': case '附': case '訃': case '赴': case '浮': case '符': case '普': case '腐': case '敷': case '膚': case '賦': case '譜': case '侮': case '舞': case '封': case '伏': case '幅': case '覆': case '払': case '沸': case '紛': case '雰': case '噴': case '墳': case '憤': case '丙': case '併': case '柄': case '塀': case '幣': case '弊': case '蔽': case '餅': case '壁': case '璧': case '癖': case '蔑': case '偏': case '遍': case '哺': case '捕': case '舗': case '募': case '慕': case '簿': case '芳': case '邦': case '奉': case '抱': case '泡': case '胞': case '俸': case '倣': case '峰': case '砲': case '崩': case '蜂': case '飽': case '褒': case '縫': case '乏': case '忙': case '坊': case '妨': case '房': case '肪': case '某': case '冒': case '剖': case '紡': case '傍': case '帽': case '貌': case '膨': case '謀': case '頰': case '朴': case '睦': case '僕': case '墨': case '撲': case '没': case '勃': case '堀': case '奔': case '翻': case '凡': case '盆': case '麻': case '摩': case '磨': case '魔': case '昧': case '埋': case '膜': case '枕': case '又': case '抹': case '慢': case '漫': case '魅': case '岬': case '蜜': case '妙': case '眠': case '矛': case '霧': case '娘': case '冥': case '銘': case '滅': case '免': case '麺': case '茂': case '妄': case '盲': case '耗': case '猛': case '網': case '黙': case '紋': case '冶': case '弥': case '厄': case '躍': case '闇': case '喩': case '愉': case '諭': case '癒': case '唯': case '幽': case '悠': case '湧': case '猶': case '裕': case '雄': case '誘': case '憂': case '融': case '与': case '誉': case '妖': case '庸': case '揚': case '揺': case '溶': case '腰': case '瘍': case '踊': case '窯': case '擁': case '謡': case '抑': case '沃': case '翼': case '拉': case '裸': case '羅': case '雷': case '頼': case '絡': case '酪': case '辣': case '濫': case '藍': case '欄': case '吏': case '痢': case '履': case '璃': case '離': case '慄': case '柳': case '竜': case '粒': case '隆': case '硫': case '侶': case '虜': case '慮': case '了': case '涼': case '猟': case '陵': case '僚': case '寮': case '療': case '瞭': case '糧': case '厘': case '倫': case '隣': case '瑠': case '涙': case '累': case '塁': case '励': case '戻': case '鈴': case '零': case '霊': case '隷': case '齢': case '麗': case '暦': case '劣': case '烈': case '裂': case '恋': case '廉': case '錬': case '呂': case '炉': case '賂': case '露': case '弄': case '郎': case '浪': case '廊': case '楼': case '漏': case '籠': case '麓': case '賄': case '脇': case '惑': case '枠': case '湾': case '腕': 
+				tot++;
+				kanji++;
+				joyo++;
+				chuu++;
+				for(x=0;unchuu.length+1 > x;x++){
+					if(unchuu[x] != char[i]){
+						tf = false;
+					}else{
+						tf = true;
+						x = 999999999;
+					}
+				}
+				if(tf == false){
+					unchuun++;
+					unchuu += char[i];
+				}
+
+				break
+
+			case '。': case '…': case '？': case '！': case '～': case '」': case '「': case '『': case '』': case '【': case '】': case '〈': case '〉': case '［': case '］': case '≪': case '≫': case '《': case '》': case '（': case '）': case '｛': case '｝': case '.': case '?': case '!': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': case '0': case '〇': case '、': case '・': case ',': case ';': case ':': case '""': case "''": case '/': case '\\': case '•': case '-':case 'a':case 'b':case 'c':case 'd':case 'e':case 'f':case 'g':case 'h':case 'i':case 'j':case 'k':case 'l':case 'm':case 'n':case 'o':case 'p':case 'q':case 'r':case 's':case 't':case 'u':case 'v':case 'w':case 'x':case 'y':case 'z':case ' ':case 'A':case 'B':case 'C':case 'D':case 'E':case 'F':case 'G':case 'H':case 'I':case 'J':case 'K':case 'L':case 'M':case 'N':case 'O':case 'P':case 'Q':case 'R':case 'S':case 'T':case 'U':case 'V':case 'W':case 'X':case 'Y':case 'Z':case'é':case'è':case'ê':case'à':case'â':case'ô':case'î':case'ù':case'û':case'+':case'*':case'%':case'µ':case'$':case'￥':case'＠':case'@':case'＃':case'＄':case'％':case'＾':case'＆':case'＊':case'＿':case'＝':case'~':case'=':case'°':case'ç':case'_':case'}':case'{':case'[':case']':case'△':case'◇':case'□':case'№':case'#':case'À':case'Á':case'Â':case'Ä':case'Ã':case'Æ':case'Ç':case'É':case'È':case'Ê':case'Ë':case'Í':case'Ì':case'Î':case'Ï':case'Ñ':case'Ó':case'Ò':case'Ô':case'Ö':case'Ø':case'Õ':case'Œ':case'Ú':case'Ù':case'Û':case'Ü':case'Ý':case'Ÿ':case'Ŷ':case'œ':case'ae':case'€':case'¥':case'²':case'|':case '>':case '<':case '=':case' ':case'　':case'\n':case'─':case'Ａ':case'Ｂ':case'Ｃ':case'Ｄ':case'Ｅ':case'Ｆ':case'Ｇ':case'Ｈ':case'Ｉ':case'Ｊ':case'Ｋ':case'Ｌ':case'Ｍ':case'Ｎ':case'Ｏ':case'Ｐ':case'Ｑ':case'Ｒ':case'Ｓ':case'Ｔ':case'Ｕ':case'Ｖ':case'Ｘ':case'Ｙ':case'Ｚ':case'１':case'２':case'３':case'４':case'５':case'６':case'７':case'８':case'９':case'０':case'ａ':case'ｂ':case'ｃ':case'ｄ':case'ｅ':case'ｆ':case'ｇ':case'ｈ':case'ｉ':case'ｊ':case'ｋ':case'ｌ':case'ｍ':case'ｎ':case'ｏ':case'ｐ':case'ｑ':case'ｒ':case'ｓ':case'ｔ':case'ｕ':case'ｖ':case'ｗ':case'ｘ':case'ｙ':case'ｚ':case'：':case'●':case'･':case'	':case 'ﾟ':case 'ﾞ':case'Ⅰ':case'Ⅱ':case'Ⅲ':case'Ⅳ':case'Ⅴ':case'○':case'Ⅵ':case'Ⅶ':case'Ⅷ':case'Ⅸ':case'Ⅹ':case'ⅰ':case'ⅱ':case'ⅲ':case'ⅳ':case'ⅴ':case'ⅵ':case'ⅶ':case'ⅷ':case'ⅸ':case'ⅹ':case'Ⅼ':case'Ⅽ':case'ⅼ':case'ⅽ':case'Ⅾ':case'ⅾ':case'Ⅿ':case'ↁ':case'㎝':case'㎏':case'"':case'‥':case'―':case'．':case'＋':case'－':case"'":case'”':case'★':case'→':case'×':case'☆':case'‐':case'※':case'ä':case'(':case')':case'Ｗ':case'／':case'♪':case'〜':case'◆':case'`':case'§':
+			break
+
+			default:
+			++tot;
+			++kanji;
+			for(x=0;ungai.length+1 > x;x++){
+					if(ungai[x] != char[i]){
+						tf = false;
+					}else{
+						tf = true;
+						x = 999999999;
+					}
+				}
+				if(tf == false){
+					ungain++;
+					ungai += char[i];
+				}
+			break
+		}
+	}
+	var clc = Math.round(kana/tot*100);
+	document.getElementById('1').innerHTML = kana+" ("+clc+"%)";
+	 clc = Math.round(hiragana/kana*100);
+	document.getElementById('2').innerHTML = hiragana+" ("+clc+"%)";
+	 clc = Math.round(katakana/kana*100);
+	document.getElementById('3').innerHTML = katakana+" ("+clc+"%)";
+	 clc = Math.round(kanji/tot*100);
+	document.getElementById('4').innerHTML = kanji+" ("+clc+"%)";
+	 clc = Math.round(joyo/kanji*100);
+	document.getElementById('5').innerHTML = joyo+" ("+clc+"%)";
+	 clc = Math.round(shou/joyo*100);
+	document.getElementById('6').innerHTML = shou+" ("+clc+"%)";
+	 clc = Math.round(chuu/joyo*100);
+	document.getElementById('7').innerHTML = chuu+" ("+clc+"%)";
+	document.getElementById('9').innerHTML = tot+"文字";
+	 clc = kanji-joyo;
+	 clc = Math.round(clc/kanji*100);
+	document.getElementById('10').innerHTML = kanji-joyo+" ("+clc+"%)";
+	if(document.getElementById('unshoun') != null){
+		document.getElementById('unshoun').innerHTML = unshoun;
+		document.getElementById('unshou').innerHTML = unshou;
+		document.getElementById('unchuun').innerHTML = unchuun;
+		document.getElementById('unchuu').innerHTML = unchuu;
+		document.getElementById('ungain').innerHTML = ungain;
+		document.getElementById('ungai').innerHTML = ungai;
+		clc = kanji-joyo;
+		clc = clc/ungain;
+		document.getElementById('ungaimult').innerHTML = 'x'+Math.round(clc);
+		document.getElementById('unchuumult').innerHTML = 'x'+Math.round(chuu/unchuun);
+		document.getElementById('unshoumult').innerHTML = 'x'+Math.round(shou/unshoun);
+	}else{
+		clc = kanji-joyo;
+		clc = clc/ungain;
+		var clc2 = chuu/unchuun;
+		var clc3 = shou/unshoun;
+		document.getElementsByTagName('body')[0].innerHTML+= '<div class="skuare">独自の小学漢字 : <span id="unshoun">'+unshoun+'</span>個　反復平均 : <span id="unshoumult">x'+Math.round(clc3)+'</span><br><br><span id="unshou">'+unshou+'</span><br><br>独自の中学漢字 : <span id="unchuun">'+unchuun+'</span>個　反復平均 : <span id="unchuumult">x'+Math.round(clc2)+'</span><br><br><span id="unchuu">'+unchuu+'</span><br><br>独自の常用外 : <span id="ungain">'+ungain+'</span>個　反復平均 : <span id="ungaimult">x'+Math.round(clc)+'</span><br><br><span id="ungai">'+ungai+'</span></div>';
+	}
+	var shoud = 0;
+	var chuud = 0;
+	var gaid = 0;
+	shoud = Math.round(shou);
+	chuud = Math.round(chuu*4);
+	gaid = Math.round((kanji-joyo)*8);
+	var indice = shoud+chuud+gaid;
+	indice = indice/tot*10;
+	indice +="";
+	if(indice[2] == "."){
+		indice = indice[0]+indice[1]+indice[2]+indice[3];
+	}else if(indice[3] == "."){
+		indice = indice[0]+indice[1]+indice[2]+indice[3]+indice[4];
+	}else{
+		indice = indice[0]+indice[1]+indice[2];
+	}
+	shoud = shoud/tot*10;
+	chuud = chuud/tot*10;
+	gaid = gaid/tot*10;
+	shoud+='';
+	chuud+='';
+	gaid+='';
+	if(shoud[2] == "."){
+		shoud = shoud[0]+shoud[1]+shoud[2]+shoud[3];
+	}else if(shoud[3] == "."){
+		shoud = shoud[0]+shoud[1]+shoud[2]+shoud[3]+shoud[4];
+	}else{
+		shoud = shoud[0]+shoud[1]+shoud[2];
+	}
+	if(chuud[2] == "."){
+		chuud = chuud[0]+chuud[1]+chuud[2]+chuud[3];
+	}else if(chuud[3] == "."){
+		chuud = chuud[0]+chuud[1]+chuud[2]+chuud[3]+chuud[4];
+	}else{
+		chuud = chuud[0]+chuud[1]+chuud[2];
+	}
+	if(gaid[2] == "."){
+		gaid = gaid[0]+gaid[1]+gaid[2]+gaid[3];
+	}else if(gaid[3] == "."){
+		gaid = gaid[0]+gaid[1]+gaid[2]+gaid[3]+gaid[4];
+	}else{
+		gaid = gaid[0]+gaid[1]+gaid[2];
+	}
+	document.getElementById('shoud').innerHTML = shoud;
+	document.getElementById('chuud').innerHTML = chuud;
+	document.getElementById('gaid').innerHTML = gaid;
+	document.getElementById('indice').innerHTML = indice;
+	var difficulty = "";
+	if(indice <= '3.6'){
+		difficulty = "easy";
+	}else if(indice <= '4.7'){
+		difficulty = "medium";
+	}else{
+		difficulty = "hard";
+	}
+	document.getElementById('difficulty').innerHTML = difficulty;
+}
+</script>
+</html>
