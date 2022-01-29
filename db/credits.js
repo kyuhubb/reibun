@@ -74,5 +74,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B00DI8TF0W/";
 		return "電波女と青春男";
 		break
+
+		case '3_003':
+		link = "https://www.amazon.co.jp/dp/B08BJ43WP8/";
+		return "Fate Zero | 第一巻";
+		break
 	}
 }
