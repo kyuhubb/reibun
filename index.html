@@ -38,7 +38,7 @@ let link = '';
 let credit = "";
 let easy = 3;
 let medium = 10;
-let hard = 2;
+let hard = 3;
 let all = easy + medium + hard;
 var diff = "hard";
 let text = "";
@@ -198,7 +198,6 @@ function run(){
 							if(found[y+1] < dotpos[y2] && found[y+2] > dotpos[y2]){
 							//	alert('delete');
 								rem = found.splice(y+1, 1);
-								rem = found.splice(y+1, 1);
 								break
 							}
 						}
@@ -206,6 +205,7 @@ function run(){
 					if(found == ''){
 						str[i] = '';
 					}
+					//alert(found);
 					var ncc = 0;
 					if(str[i] != ''){
 						bluew0l = w[0].length;
@@ -267,7 +267,7 @@ function run(){
     		values.push(i);
 		}
 		if(w[0] != ""){
-			for(i = 0; i < 5; ++i){
+			for(i = 0; i < 10; ++i){
 				if(values != ""){
 					var n = values.splice(Math.random()*values.length,1)[0];
 					results.innerHTML += ans[n];
