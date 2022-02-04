@@ -15,6 +15,11 @@ function getC(credit){
 		return "星の王子さま";
 		break
 
+		case '1_004':
+		link = "https://www.amazon.co.jp/dp/B06VS62J16";
+		return "勇者ですが異世界でエルフ嫁とピザ店始めます";
+		break
+
 		case '2_001':
 		link = "https://www.amazon.co.jp/gp/product/B00QWGZ1JG";
 		return "ブギーポップは笑わない";
