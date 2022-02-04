@@ -14,6 +14,10 @@ body{
 	font-family: arial;
 }
 
+.a2:hover{
+	background: none;
+}
+
 #explanations{
 	border: ridge 5px #444;
 	border-top: none;
