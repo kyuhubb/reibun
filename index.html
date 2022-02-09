@@ -363,9 +363,15 @@ function waiting(){
 		results.innerHTML = "<p class='res'>Total sentences : "+total+"</p>";
 		window.clearInterval(interval);
 		console.log('books loaded !');
+		if(search != "" && search != null){run()};
 	}
 }
 
 var countms = 0;
 var interval = setInterval(function(){waiting();}, 100);
+let search = $_GET('w');
+if(search != null && search != ""){
+	search = decodeURI(search);
+	document.getElementById('question').value = search;
+}
 </script>
