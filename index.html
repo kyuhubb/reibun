@@ -39,7 +39,7 @@ let bookloaded = '0';
 let link = '';
 let credit = "";
 let easy = 4;
-let medium = 12;
+let medium = 14;
 let hard = 3;
 let all = easy + medium + hard;
 var diff = "hard";
@@ -360,7 +360,7 @@ function waiting(){
 	console.log(countms+'ms');
 	if(bookloaded == all){
 		var total = text.match(/」/g).length + text.match(/。/g).length + text.match(/？/g).length + text.match(/！/g).length;
-		results.innerHTML = "<p class='res'>Total sentences : "+total+"</p>";
+		results.innerHTML = "<p class='res'>Total sentences : "+Math.floor(total/1000)+"K</p>";
 		window.clearInterval(interval);
 		console.log('books loaded !');
 		if(search != "" && search != null){run()};
