@@ -70,6 +70,16 @@ function getC(credit){
 		return "ブギーポップ・リターンズ　VS　イマジネーターPart1";
 		break
 
+		case '2_011':
+		link = "https://www.amazon.co.jp/dp/B01MQKBDOA";
+		return "繰り巫女あやかし夜噺|第一巻";
+		break
+
+		case '2_012':
+		link = "https://www.amazon.co.jp/dp/B0093T5P5Y";
+		return "GOSICK|第一巻";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第一巻";
