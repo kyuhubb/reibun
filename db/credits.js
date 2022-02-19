@@ -89,6 +89,31 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B009GPMKEE";
 		return "GOSICK | 第３巻";
 		break
+		
+		case '2_015':
+		link = "https://www.amazon.co.jp/dp/4758047634";
+		return "吸血鬼に彼女役を頼んだ結果";
+		break
+
+		case '2_016':
+		link = "https://www.amazon.co.jp/dp/B009EN3M7C";
+		return "涼宮ハルヒ│第１巻";
+		break
+
+		case '2_017':
+		link = "https://www.amazon.co.jp/dp/B009EN3MNG";
+		return "涼宮ハルヒ│第２巻";
+		break
+
+		case '2_018':
+		link = "https://www.amazon.co.jp/dp/B009EN3N58";
+		return "涼宮ハルヒ│第３巻";
+		break
+
+		case '2_019':
+		link = "https://www.amazon.co.jp/dp/B009EN3MAY";
+		return "涼宮ハルヒ│第４巻";
+		break
 
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
