@@ -134,5 +134,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/4103970022";
 		return "屍鬼 | 上巻";
 		break
+
+		case '3_005':
+		link = "https://www.amazon.co.jp/dp/B00TWWVSLW";
+		return "千本桜 | 第１巻";
+		break
 	}
 }
