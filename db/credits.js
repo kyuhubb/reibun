@@ -62,7 +62,7 @@ function getC(credit){
 
 		case '2_009':
 		link = "https://www.amazon.co.jp/gp/product/4061388126";
-		return "ダンガンロンパ/ゼロ | 第１巻(上)";
+		return "ダンガンロンパ/ゼロ | 上巻";
 		break
 
 		case '2_010':
@@ -128,6 +128,11 @@ function getC(credit){
 		case '3_003':
 		link = "https://www.amazon.co.jp/dp/B08BJ43WP8/";
 		return "Fate Zero | 第１巻";
+		break
+
+		case '3_004':
+		link = "https://www.amazon.co.jp/dp/4103970022";
+		return "屍鬼 | 上巻";
 		break
 	}
 }
