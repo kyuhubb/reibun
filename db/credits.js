@@ -139,5 +139,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B00TWWVSLW";
 		return "千本桜 | 第１巻";
 		break
+
+		case '3_006':
+		link = "https://www.amazon.co.jp/dp/4086304058";
+		return "ベン・トー | 第１巻";
+		break
 	}
 }
