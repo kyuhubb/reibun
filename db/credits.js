@@ -120,6 +120,11 @@ function getC(credit){
 		return "俺の教室にハルヒはいない │ 第１巻";
 		break
 
+		case '2_021':
+		link = "https://www.amazon.co.jp/dp/B00G56SK82";
+		return "サカサマノパテマ";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第１巻";
