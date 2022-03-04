@@ -154,5 +154,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/4086304058";
 		return "ベン・トー | 第１巻";
 		break
+
+		case '3_007':
+		link = "https://www.amazon.co.jp/dp/B01N0DGVXS";
+		return "この世で最後のデートをきみと";
+		break
 	}
 }
