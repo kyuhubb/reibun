@@ -169,5 +169,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B06XCCZD3M";
 		return "８６―エイティシックス―";
 		break
+
+		case '3_009':
+		link = "https://www.amazon.co.jp/dp/B01B5QTVA2";
+		return "ゴブリンスレイヤー │ 第１巻";
+		break
 	}
 }
