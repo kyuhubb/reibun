@@ -164,5 +164,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B01N0DGVXS";
 		return "この世で最後のデートをきみと";
 		break
+
+		case '3_008':
+		link = "https://www.amazon.co.jp/dp/B06XCCZD3M";
+		return "８６―エイティシックス―";
+		break
 	}
 }
