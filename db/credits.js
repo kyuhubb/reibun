@@ -20,6 +20,11 @@ function getC(credit){
 		return "勇者ですが異世界でエルフ嫁とピザ店始めます";
 		break
 
+		case '1_005':
+		link = "https://www.amazon.co.jp/dp/B072JBCWRN";
+		return "僕の部屋がダンジョンの休憩所になってしまった件 │ 第１巻";
+		break
+
 		case '2_001':
 		link = "https://www.amazon.co.jp/gp/product/B00QWGZ1JG";
 		return "ブギーポップは笑わない";
