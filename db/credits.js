@@ -135,6 +135,11 @@ function getC(credit){
 		return "コートボニー教授の永続魔石 | 第１巻";
 		break
 
+		case '2_023':
+		link = "https://www.amazon.co.jp/dp/B009QUKPIM";
+		return "ゼロの使い魔 | 第１巻";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第１巻";
