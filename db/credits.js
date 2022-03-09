@@ -184,5 +184,10 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B01B5QTVA2";
 		return "ゴブリンスレイヤー │ 第１巻";
 		break
+
+		case '3_010':
+		link = "https://www.amazon.co.jp/dp/B011VKE1QQ";
+		return "Fate/strange Fake │ 第１巻";
+		break
 	}
 }
