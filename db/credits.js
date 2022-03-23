@@ -140,6 +140,16 @@ function getC(credit){
 		return "ゼロの使い魔 | 第１巻";
 		break
 
+		case '2_024':
+		link = "https://www.amazon.co.jp/dp/B00TKIAMYW";
+		return "本好きの下剋上 | 第１巻";
+		break
+
+		case '2_025':
+		link = "https://www.amazon.co.jp/dp/B007IALLL2";
+		return "月見月理解の探偵殺人 | 第１巻";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第１巻";
