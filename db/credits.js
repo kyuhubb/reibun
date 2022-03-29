@@ -150,6 +150,11 @@ function getC(credit){
 		return "月見月理解の探偵殺人 | 第１巻";
 		break
 
+		case '2_026':
+		link = "https://www.amazon.co.jp/dp/B01N21N4AA";
+		return "暗殺候補生 - 蒼き薔薇のエヴァレット";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第１巻";
