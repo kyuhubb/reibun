@@ -152,7 +152,7 @@ function getC(credit){
 
 		case '2_026':
 		link = "https://www.amazon.co.jp/dp/B01N21N4AA";
-		return "暗殺候補生 - 蒼き薔薇のエヴァレット";
+		return "暗殺候補生　蒼き薔薇のエヴァレット";
 		break
 
 		case '3_001':
@@ -203,6 +203,11 @@ function getC(credit){
 		case '3_010':
 		link = "https://www.amazon.co.jp/dp/B011VKE1QQ";
 		return "Fate/strange Fake │ 第１巻";
+		break
+
+		case '3_011':
+		link = "https://www.amazon.co.jp/dp/B076519PXP";
+		return "新説　東遊記";
 		break
 	}
 }
