@@ -155,6 +155,11 @@ function getC(credit){
 		return "暗殺候補生　蒼き薔薇のエヴァレット";
 		break
 
+		case '2_027':
+		link = "https://www.amazon.co.jp/dp/489737670X";
+		return "女子学生会長 マッカーサー大戦回想記に目覚める! ";
+		break
+
 		case '3_001':
 		link = "https://www.amazon.co.jp/gp/product/404727027X";
 		return "○X△べーす | 第１巻";
@@ -208,6 +213,11 @@ function getC(credit){
 		case '3_011':
 		link = "https://www.amazon.co.jp/dp/B076519PXP";
 		return "新説　東遊記";
+		break
+
+		case '3_012':
+		link = "https://www.amazon.co.jp/dp/B009IXLHZ2";
+		return "吾輩は猫である";
 		break
 	}
 }
