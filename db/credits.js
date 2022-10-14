@@ -214,10 +214,5 @@ function getC(credit){
 		link = "https://www.amazon.co.jp/dp/B076519PXP";
 		return "新説　東遊記";
 		break
-
-		case '3_012':
-		link = "https://www.amazon.co.jp/dp/B009IXLHZ2";
-		return "吾輩は猫である";
-		break
 	}
 }
